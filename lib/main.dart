@@ -1,6 +1,8 @@
+import 'package:first_app/question.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import './question.dart';
 
 void main() => runApp(MyApp());
 //This is shorthand only to be used when there's a single statement
@@ -22,34 +24,34 @@ class MyAppState extends State<MyApp> {
   //If you add a method that's already existing in the class then you add this to show that
   //you are deliberately overriding it
 
-  var currentQuestion = 0;
-  var currentOption = 0;
+  var _currentQuestion = 0;
+  var _currentOption = 0;
 
-  void optionChosen() {
+  void _optionChosen() {
     setState(() {
-      if (currentOption < 1 && currentQuestion < 1) {
-        print(currentOption);
-        print(currentQuestion);
+      if (_currentOption < 1 && _currentQuestion < 1) {
+        print(_currentOption);
+        print(_currentQuestion);
 
-        currentQuestion++;
-        currentOption++;
+        _currentQuestion++;
+        _currentOption++;
       }
     });
   }
 
   Widget build(BuildContext context) {
-    var answerResults = [
+    var _answerResults = [
       'Correct Answer...You will become Kaizoku ni Naru',
       'Incorrect Answer you fool you fool',
     ];
-    var questionsOfQuiz = [
+    var _questionsOfQuiz = [
       'Which is the best Anime??',
       'Who is the best Main Character??',
     ];
 
-    var optionsA = ['One Piece', 'Luffy'];
-    var optionsB = ['Naruto', 'Naruto'];
-    var optionsC = ['Bleach', 'Ichigo'];
+    var _optionsA = ['One Piece', 'Luffy'];
+    var _optionsB = ['Naruto', 'Naruto'];
+    var _optionsC = ['Bleach', 'Ichigo'];
 
     return MaterialApp(
         home: Scaffold(
@@ -75,12 +77,9 @@ class MyAppState extends State<MyApp> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(questionsOfQuiz.elementAt(currentQuestion) + '\n',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        )),
+                    Question(
+                      _questionsOfQuiz.elementAt(_currentQuestion) + '\n',
+                    ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: Colors.orange[700],
@@ -91,10 +90,10 @@ class MyAppState extends State<MyApp> {
                           minimumSize: Size(180, 50),
                         ),
                         onPressed: () => {
-                              optionChosen(),
-                              print(answerResults[0]),
+                              _optionChosen(),
+                              print(_answerResults[0]),
                               Fluttertoast.showToast(
-                                  msg: answerResults[0],
+                                  msg: _answerResults[0],
                                   backgroundColor: Colors.white,
                                   timeInSecForIosWeb: 3,
                                   fontSize: 25,
@@ -102,7 +101,7 @@ class MyAppState extends State<MyApp> {
                                   textColor: Colors.green)
                             },
                         child: Text(
-                          optionsA[currentOption],
+                          _optionsA[_currentOption],
                           style: TextStyle(
                             fontSize: 30,
                             color: Colors.black,
@@ -119,9 +118,9 @@ class MyAppState extends State<MyApp> {
                         minimumSize: Size(180, 50),
                       ),
                       onPressed: () => {
-                        print(answerResults[1]),
+                        print(_answerResults[1]),
                         Fluttertoast.showToast(
-                            msg: answerResults[1],
+                            msg: _answerResults[1],
                             backgroundColor: Colors.white,
                             timeInSecForIosWeb: 3,
                             fontSize: 25,
@@ -129,7 +128,7 @@ class MyAppState extends State<MyApp> {
                             textColor: Colors.red)
                       },
                       child: Text(
-                        optionsB[currentOption],
+                        _optionsB[_currentOption],
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.black,
@@ -147,9 +146,9 @@ class MyAppState extends State<MyApp> {
                         minimumSize: Size(180, 50),
                       ),
                       onPressed: () => {
-                        print(answerResults[1]),
+                        print(_answerResults[1]),
                         Fluttertoast.showToast(
-                            msg: answerResults[1],
+                            msg: _answerResults[1],
                             backgroundColor: Colors.white,
                             timeInSecForIosWeb: 3,
                             fontSize: 25,
@@ -157,7 +156,7 @@ class MyAppState extends State<MyApp> {
                             textColor: Colors.red)
                       },
                       child: Text(
-                        optionsC[currentOption],
+                        _optionsC[_currentOption],
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.black,
