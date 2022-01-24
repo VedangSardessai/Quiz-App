@@ -7,11 +7,14 @@ class Question extends StatelessWidget {
   Question(this.questionText);
 
   Widget build(BuildContext context) {
-    return Text(questionText,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-        ));
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Text(questionText,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          )),
+    );
   }
 }
