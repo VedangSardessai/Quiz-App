@@ -44,8 +44,11 @@ class _MyAppState extends State<MyApp> {
       'Correct Answer...You will become Kaizoku ni Naru',
       'Incorrect Answer you fool you fool',
     ];
-
-    var questionsAnswers = [
+    //
+    //We use final when we want to use it during runtime
+    //We use const when  we want it during compile time
+    //Final should only be used instead of const iff you do not know the value during compile time else use const
+    const questionsAnswers = [
       {
         'questions': 'Which is the best Anime ?',
         'answers': [
@@ -57,16 +60,16 @@ class _MyAppState extends State<MyApp> {
       {
         'questions': 'Who is the best MC ?',
         'answers': [
-          'Luffy'
-              'Naruto',
+          'Luffy',
+          'Naruto',
           'Ichigo',
         ]
       },
       {
         'questions': 'Which is the best Anime?',
         'answers': [
-          'Luffy & Zoro'
-              'Naruto & Sasuke',
+          'Luffy & Zoro',
+          'Naruto & Sasuke',
           'Ichigo & Kuchiki',
         ]
       },
@@ -80,7 +83,7 @@ class _MyAppState extends State<MyApp> {
               ),
               backgroundColor: Colors.orange[700],
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+                  borderRadius: BorderRadius.circular(0)),
             ),
             body: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,7 +100,7 @@ class _MyAppState extends State<MyApp> {
                             as List<String>)
                         .map((answer) {
                       return OptionButtons(_optionChosen, answer);
-                    }).toList()
+                    }).toList(),
                   ],
                 ),
               ],
