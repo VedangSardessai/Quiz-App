@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         'questions': 'Which is the best Anime ?',
         'answers': [
           'One Piece',
-              'Naruto',
+          'Naruto',
           'Bleach',
         ]
       },
@@ -93,6 +93,7 @@ class _MyAppState extends State<MyApp> {
                       // '\n',
                     ),
                     ...(questionsAnswers[_currentQuestion]['answers']
+                            //Here spread operator is used to take the individual items of a list and store it in another list
                             as List<String>)
                         .map((answer) {
                       return OptionButtons(_optionChosen, answer);
