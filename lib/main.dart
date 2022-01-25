@@ -29,11 +29,8 @@ class _MyAppState extends State<MyApp> {
 
   void _optionChosen() {
     setState(() {
-      if (_currentOption < 2 && _currentQuestion < 2) {
+      if (_currentQuestion <= 2) {
         print(_currentOption);
-        print(_currentQuestion);
-
-        _currentQuestion++;
         _currentOption++;
       }
     });
@@ -48,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     //We use final when we want to use it during runtime
     //We use const when  we want it during compile time
     //Final should only be used instead of const iff you do not know the value during compile time else use const
-    const questionsAnswers = [
+    var questionsAnswers = [
       {
         'questions': 'Which is the best Anime ?',
         'answers': [
@@ -66,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         ]
       },
       {
-        'questions': 'Which is the best Anime?',
+        'questions': 'Which is the best Anime duo?',
         'answers': [
           'Luffy & Zoro',
           'Naruto & Sasuke',
@@ -85,25 +82,35 @@ class _MyAppState extends State<MyApp> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(0)),
             ),
-            body: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    Question(
-                      // '\n\n' +
-                      questionsAnswers[_currentQuestion]['questions'],
-                      // '\n',
+            body: _currentQuestion <= 2
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+                          Question(
+                            // '\n\n' +
+                            questionsAnswers[_currentQuestion]['questions'],
+                            // '\n',
+                          ),
+                          ...(questionsAnswers[_currentQuestion]['answers']
+                                  //Here spread operator is used to take the individual items of a list and store it in another list
+                                  as List<String>)
+                              .map((answer) {
+                            return OptionButtons(_optionChosen, answer);
+                          }).toList(),
+                        ],
+                      ),
+                    ],
+                  )
+                : Center(
+                    child: Text(
+                    'Quiz Completed Successfully!!',
+                    style: TextStyle(
+                      fontSize: 28,
+                      color: Colors.green[800],
+                      fontWeight: FontWeight.bold,
                     ),
-                    ...(questionsAnswers[_currentQuestion]['answers']
-                            //Here spread operator is used to take the individual items of a list and store it in another list
-                            as List<String>)
-                        .map((answer) {
-                      return OptionButtons(_optionChosen, answer);
-                    }).toList(),
-                  ],
-                ),
-              ],
-            )));
+                  ))));
   }
 }
