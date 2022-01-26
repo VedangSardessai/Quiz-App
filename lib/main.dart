@@ -1,9 +1,7 @@
-import 'package:first_app/optionButtons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import './question.dart';
-import './optionButtons.dart';
+import 'package:first_app/quiz.dart';
+import 'package:first_app/result.dart';
 
 void main() => runApp(MyApp());
 //This is shorthand only to be used when there's a single statement
@@ -31,7 +29,7 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       if (_currentQuestion <= 2) {
         print(_currentOption);
-        _currentOption++;
+        _currentQuestion++;
       }
     });
   }
@@ -45,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     //We use final when we want to use it during runtime
     //We use const when  we want it during compile time
     //Final should only be used instead of const iff you do not know the value during compile time else use const
-    var questionsAnswers = [
+    var _questionsAnswers = [
       {
         'questions': 'Which is the best Anime ?',
         'answers': [
@@ -83,34 +81,7 @@ class _MyAppState extends State<MyApp> {
                   borderRadius: BorderRadius.circular(0)),
             ),
             body: _currentQuestion <= 2
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          Question(
-                            // '\n\n' +
-                            questionsAnswers[_currentQuestion]['questions'],
-                            // '\n',
-                          ),
-                          ...(questionsAnswers[_currentQuestion]['answers']
-                                  //Here spread operator is used to take the individual items of a list and store it in another list
-                                  as List<String>)
-                              .map((answer) {
-                            return OptionButtons(_optionChosen, answer);
-                          }).toList(),
-                        ],
-                      ),
-                    ],
-                  )
-                : Center(
-                    child: Text(
-                    'Quiz Completed Successfully!!',
-                    style: TextStyle(
-                      fontSize: 28,
-                      color: Colors.green[800],
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ))));
+                ? Quiz(_questionsAnswers, _currentQuestion, _optionChosen)
+                : Result()));
   }
 }
