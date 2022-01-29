@@ -31,7 +31,7 @@ class Result extends StatelessWidget {
 
     if (totalScore == 300)
       return Text(
-        'You are KAIZOKU NI NARU\n',
+        'YOU ARE KAIZOKU NI NARU\n',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 26,
@@ -77,7 +77,8 @@ class Result extends StatelessWidget {
                                     color: Colors.green[800],
                                     fontWeight: FontWeight.bold,
                                   ),
-                                )),
+                                )
+                            ),
                           ],
                         ),
                         Container(
@@ -96,13 +97,17 @@ class Result extends StatelessWidget {
                                     fontSize: 25,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                  ))),
+                                  )
+                              )
+                          ),
                         )
                       ],
-                    ))
+                    )
+                )
               ],
             )
           ],
-        ));
+        )
+    );
   }
 }

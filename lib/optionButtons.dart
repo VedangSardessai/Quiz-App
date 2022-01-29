@@ -18,7 +18,8 @@ class OptionButtons extends StatelessWidget {
               color: Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.bold,
-            )),
+            )
+        ),
         style: ElevatedButton.styleFrom(
           primary: Colors.orange[700],
           shape:

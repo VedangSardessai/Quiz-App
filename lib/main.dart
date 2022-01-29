@@ -32,8 +32,7 @@ class _MyAppState extends State<MyApp> {
         print(_totalScore);
         _currentQuestion++;
       }
-    });
-  }
+    });}
 
   void _resetQuiz() {
     setState(() {

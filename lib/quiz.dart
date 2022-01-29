@@ -16,9 +16,7 @@ class Quiz extends StatelessWidget {
         Column(
           children: [
             Question(
-              // '\n\n' +
               questionsAnswers[currentQuestion]['questions'],
-              // '\n',
             ),
             ...(questionsAnswers[currentQuestion]['answers']
                     //Here spread operator is used to take the individual items of a list and store it in another list
