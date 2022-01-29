@@ -12,7 +12,6 @@ class Quiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      
       children: [
         Column(
           children: [
@@ -23,11 +22,12 @@ class Quiz extends StatelessWidget {
             ),
             ...(questionsAnswers[currentQuestion]['answers']
                     //Here spread operator is used to take the individual items of a list and store it in another list
-                    as List<String>)
+                    as List<Map<String, Object>>)
                 .map((answer) {
-              return OptionButtons(optionChosen, answer);
+              return OptionButtons(
+                  () => optionChosen(answer['score']), answer['text']);
             }).toList(),
-          ],
+          ], 
         ),
       ],
     );

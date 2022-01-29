@@ -24,13 +24,23 @@ class _MyAppState extends State<MyApp> {
   @override
   var _currentQuestion = 0;
   var _currentOption = 0;
+  int _totalScore = 0;
 
-  void _optionChosen() {
+  void _optionChosen(int score) {
     setState(() {
       if (_currentQuestion <= 2) {
-        print(_currentOption);
+        _totalScore += score;
+        print(_totalScore);
         _currentQuestion++;
       }
+    });
+  }
+
+  void _resetQuiz() {
+    setState(() {
+      _currentQuestion = 0;
+      _currentOption = 0;
+      _totalScore = 0;
     });
   }
 
@@ -47,25 +57,25 @@ class _MyAppState extends State<MyApp> {
       {
         'questions': 'Which is the best Anime ?',
         'answers': [
-          'One Piece',
-          'Naruto',
-          'Bleach',
+          {'text': 'One Piece', 'score': 100},
+          {'text': 'Naruto', 'score': 0},
+          {'text': 'Bleach', 'score': 0},
         ]
       },
       {
         'questions': 'Who is the best MC ?',
         'answers': [
-          'Luffy',
-          'Naruto',
-          'Ichigo',
+          {'text': 'Luffy', 'score': 100},
+          {'text': 'Naruto', 'score': 0},
+          {'text': 'Ichigo', 'score': 0},
         ]
       },
       {
         'questions': 'Which is the best Anime duo?',
         'answers': [
-          'Luffy & Zoro',
-          'Naruto & Sasuke',
-          'Ichigo & Kuchiki',
+          {'text': 'Luffy & Zoro', 'score': 100},
+          {'text': 'Naruto & Sasuke', 'score': 0},
+          {'text': 'Ichigo & Kuchiki', 'score': 0},
         ]
       },
     ];
@@ -82,6 +92,6 @@ class _MyAppState extends State<MyApp> {
             ),
             body: _currentQuestion <= 2
                 ? Quiz(_questionsAnswers, _currentQuestion, _optionChosen)
-                : Result()));
+                : Result(_totalScore, _resetQuiz)));
   }
 }
