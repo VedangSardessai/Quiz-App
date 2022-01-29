@@ -4,7 +4,7 @@ import 'package:first_app/quiz.dart';
 import 'package:first_app/result.dart';
 
 void main() => runApp(MyApp());
-//This is shorthand only to be used when there's a single statement
+//This is shorthand only to be used when there's a single statement to be used for a single statement only
 
 //The main function is auto executed when  our app is launched.Where we call runApp
 //provided to us by flutter  what it does is any widget that is built by us is drawn
