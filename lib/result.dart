@@ -34,7 +34,7 @@ class Result extends StatelessWidget {
         'YOU ARE KAIZOKU NI NARU\n',
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 26,
+          fontSize: 25,
           color: Colors.green[800],
           fontWeight: FontWeight.bold,
         ),
@@ -77,8 +77,7 @@ class Result extends StatelessWidget {
                                     color: Colors.green[800],
                                     fontWeight: FontWeight.bold,
                                   ),
-                                )
-                            ),
+                                )),
                           ],
                         ),
                         Container(
@@ -97,17 +96,13 @@ class Result extends StatelessWidget {
                                     fontSize: 25,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                  )
-                              )
-                          ),
+                                  ))),
                         )
                       ],
-                    )
-                )
+                    ))
               ],
             )
           ],
-        )
-    );
+        ));
   }
 }

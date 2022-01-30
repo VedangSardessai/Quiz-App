@@ -32,7 +32,8 @@ class _MyAppState extends State<MyApp> {
         print(_totalScore);
         _currentQuestion++;
       }
-    });}
+    });
+  }
 
   void _resetQuiz() {
     setState(() {
@@ -83,6 +84,7 @@ class _MyAppState extends State<MyApp> {
               centerTitle: true,
               title: Text(
                 "Quiz App",
+                style: TextStyle(fontSize: 30),
               ),
               backgroundColor: Colors.orange[700],
               shape: RoundedRectangleBorder(
